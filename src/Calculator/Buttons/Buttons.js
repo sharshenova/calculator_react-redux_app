@@ -11,7 +11,7 @@ class Buttons extends Component {
         return (
             <div className='Buttons row'>
                 {numbers.map(number => {
-                    return <div className='col col-4'>
+                    return <div className='col col-4' key={number}>
                         <Button number={number}/>
                     </div>
                 })}

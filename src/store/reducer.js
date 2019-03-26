@@ -1,6 +1,6 @@
 // первоначальное значение стейта, которое будет храниться в хранилище после первого вызова редьюсера:
 const initialState = {
-    count: 0
+    number_on_display: 0
 };
 
 // редьюсер принимает первым значением некий "аккумулятор" (стейт),
@@ -8,9 +8,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'DISPLAY_SYMBOL':
-            return {...state, count: state.count};
+            return {...state, number_on_display: state.number_on_display + 5};
         case 'SUM':
-            return {...state, count: state.count + action.amount};
+            return {...state, number_on_display: state.number_on_display + action.amount};
         default:
             return state;
     }

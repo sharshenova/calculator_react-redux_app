@@ -3,15 +3,16 @@ import './Calculator.css';
 import {connect} from "react-redux";
 // import Display from './Display/Display';
 import Buttons from './Buttons/Buttons';
+import Display from "./Display/Display";
 
 
 class Calculator extends Component {
     render() {
-        const {numbers} = this.props;
+        const {numbers, number_on_display} = this.props;
         console.log(numbers, 'numbersss');
         return (
             <div className='Calculator'>
-                {/*<Display></Display>*/}
+                <Display number_on_display={number_on_display}></Display>
                 <Buttons numbers={numbers}></Buttons>
             </div>
         )
@@ -32,6 +33,7 @@ console.log(numbers, 'numbers');
 const mapStateToProps = state => {
     return {
         numbers: numbers,
+        number_on_display: state.number_on_display,
         count: state.count,
         operation: state.operation,
     }

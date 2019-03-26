@@ -2,14 +2,13 @@ import React, {Component} from 'react';
 import './Button.css';
 
 
-
 class Button extends Component {
     render() {
-        const {number} = this.props;
+        const {number, displaySymbol} = this.props;
         console.log(number, 'number');
         return (
             <div className='Button'>
-                <button className='btn btn-info'>{number}</button>
+                <button className='btn btn-info' onClick={displaySymbol}>{number}</button>
             </div>
         )
     }
