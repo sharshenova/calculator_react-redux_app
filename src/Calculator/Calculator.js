@@ -1,27 +1,39 @@
 import React, {Component} from 'react';
 import './Calculator.css';
 import {connect} from "react-redux";
+// import Display from './Display/Display';
+import Buttons from './Buttons/Buttons';
 
 
 class Calculator extends Component {
     render() {
-        const {counter, increaseCounter, addCounter} = this.props;
+        const {numbers} = this.props;
+        console.log(numbers, 'numbersss');
         return (
             <div className='Calculator'>
-                <h1>{counter}</h1>
-                <button onClick={increaseCounter}>Increase</button>
-                <button onClick={() => addCounter(5)}>Increase by 5</button>
+                {/*<Display></Display>*/}
+                <Buttons numbers={numbers}></Buttons>
             </div>
         )
     }
 }
+
+let numbers = [];
+console.log(numbers, 'numbers');
+for (let number=1; number < 10; number++) {
+    numbers.push(number);
+}
+console.log(numbers, 'numbers');
+
 
 // Первый аргумент connect-a
 // нужен для того, чтобы "соединить" props, которые будут приходить в наш компонент, с глобальным стейтом Redux-а
 // принимает state и возвращает объект, который будет передан как props в наш компонент
 const mapStateToProps = state => {
     return {
-        counter: state.counter
+        numbers: numbers,
+        count: state.count,
+        operation: state.operation,
     }
 };
 
@@ -30,8 +42,8 @@ const mapStateToProps = state => {
 // принимает dispatch, а возвращает объект, каждый ключ которого будет передан в props нашего компонента.
 const mapDispatchToProps = dispatch => {
     return {
-        increaseCounter: () => dispatch({type: 'INCREMENT'}),
-        addCounter: (amount) => dispatch({type: 'ADD_COUNTER', amount}),
+        displaySymbol: () => dispatch({type: 'DISPLAY_SYMBOL'}),
+        sum: (amount) => dispatch({type: 'SUM', amount}),
     };
 };
 
