@@ -8,12 +8,12 @@ import Display from "./Display/Display";
 
 class Calculator extends Component {
     render() {
-        const {numbers, number_on_display} = this.props;
+        const {numbers, number_on_display, displaySymbol} = this.props;
         console.log(numbers, 'numbersss');
         return (
             <div className='Calculator'>
                 <Display number_on_display={number_on_display}></Display>
-                <Buttons numbers={numbers}></Buttons>
+                <Buttons displaySymbol={displaySymbol} numbers={numbers} number_on_display={number_on_display}></Buttons>
             </div>
         )
     }
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 // принимает dispatch, а возвращает объект, каждый ключ которого будет передан в props нашего компонента.
 const mapDispatchToProps = dispatch => {
     return {
-        displaySymbol: () => dispatch({type: 'DISPLAY_SYMBOL'}),
+        displaySymbol: (number) => dispatch({type: 'DISPLAY_SYMBOL', number}),
         sum: (amount) => dispatch({type: 'SUM', amount}),
     };
 };
