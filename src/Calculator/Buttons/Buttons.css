@@ -1,7 +1,12 @@
 .Buttons {
     border: 1px solid black;
-    width: 250px;
+    width: 360px;
     height: 250px;
     margin: 60px auto;
     padding: 20px 10px;
+}
+
+.Button button {
+    margin: 5px auto;
+    padding: 10px 20px;
 }

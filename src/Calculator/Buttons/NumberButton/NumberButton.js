@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
-import './Button.css';
+// import './NumberButton.css';
 
 
-class Button extends Component {
+class NumberButton extends Component {
     render() {
-        const {number, displaySymbol, number_on_display} = this.props;
+        const {number, displayNumber, number_on_display} = this.props;
         console.log(number, 'number');
         let str_number = String(number);
         console.log(str_number, 'str_number');
         console.log(number_on_display, 'number_on_display');
         return (
             <div className='Button'>
-                <button className='btn btn-info' onClick={() => displaySymbol(str_number)}>{number}</button>
+                <button className='btn btn-info' onClick={() => displayNumber(str_number)}>{number}</button>
             </div>
         )
     }
 }
 
-export default Button;
+export default NumberButton;
 
 
 {/*<h1>{count}</h1>*/}
