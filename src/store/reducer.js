@@ -5,7 +5,8 @@ const initialState = {
     operation_on_display: null,
     first_operand: null,
     second_operand: null,
-    print_number2: false
+    print_number2: false,
+    result: null
 };
 
 // редьюсер принимает первым значением некий "аккумулятор" (стейт),
@@ -24,8 +25,24 @@ const reducer = (state = initialState, action) => {
             console.log(state, 'state');
             return {...state, operation_on_display: action.operation,
                 first_operand: first_operand, print_number2: true};
-        case 'SUM':
-            return {...state, number_on_display: state.number_on_display + action.amount};
+        case 'EVAL_OPERATION':
+            let {second_operand, number2_on_display} = state;
+            second_operand = Number(number2_on_display);
+            console.log(state, 'state');
+            let result = null;
+            if (state.operation_on_display === '+') {
+                result = state.first_operand + second_operand;
+            } else if (state.operation_on_display === '-') {
+                result = state.first_operand - second_operand;
+            } else if (state.operation_on_display === '*') {
+                result = state.first_operand * second_operand;
+            } else if (state.operation_on_display === '/') {
+                result = state.first_operand / second_operand;
+            } else result = null;
+            return {...state, eval_on_display: '=', second_operand: second_operand, print_number2: false,
+                result: result};
+        // case 'ERASE_ALL':
+        //     state = initialState;
         default:
             return state;
     }
