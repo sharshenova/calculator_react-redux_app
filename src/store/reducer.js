@@ -41,8 +41,9 @@ const reducer = (state = initialState, action) => {
             } else result = null;
             return {...state, eval_on_display: '=', second_operand: second_operand, print_number2: false,
                 result: result};
-        // case 'ERASE_ALL':
-        //     state = initialState;
+        case 'ERASE_ALL':
+            state = initialState;
+            return {...state};
         default:
             return state;
     }

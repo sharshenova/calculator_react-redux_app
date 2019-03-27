@@ -8,7 +8,7 @@ class Display extends Component {
         console.log(number_on_display, 'numbers on Display');
         return (
             <div className='Display'>
-                <p>Считаю!</p>
+                <p>CALCULATOR</p>
                 {number_on_display ? <p>{number_on_display}</p> : []}
                 {operation_on_display ? <p>{operation_on_display}</p> : []}
                 {number2_on_display ? <p>{number2_on_display}</p> : []}
