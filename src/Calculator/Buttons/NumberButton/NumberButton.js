@@ -4,11 +4,8 @@ import React, {Component} from 'react';
 
 class NumberButton extends Component {
     render() {
-        const {number, displayNumber, number_on_display} = this.props;
-        console.log(number, 'number');
+        const {number, displayNumber} = this.props;
         let str_number = String(number);
-        console.log(str_number, 'str_number');
-        console.log(number_on_display, 'number_on_display');
         return (
             <div className='Button'>
                 <button className='btn btn-info' onClick={() => displayNumber(str_number)}>{number}</button>
@@ -19,7 +16,3 @@ class NumberButton extends Component {
 
 export default NumberButton;
 
-
-{/*<h1>{count}</h1>*/}
-{/*<button onClick={increaseCounter}>Increase</button>*/}
-{/*<button onClick={() => addCounter(5)}>Increase by 5</button>*/}

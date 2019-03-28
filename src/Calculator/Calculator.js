@@ -8,23 +8,21 @@ import Display from "./Display/Display";
 
 class Calculator extends Component {
     render() {
-        const {numbers, operations, number_on_display, number2_on_display, operation_on_display, displayNumber,
-            displayOperation, print_number2, displayEval, eval_on_display, result, eraseAll} = this.props;
-        console.log(numbers, 'numbersss');
+        const {numbers, operations, numbers_on_display, symbols_on_display, result,
+            displayNumber, displayOperation, displayEval, eraseAll} = this.props;
         return (
             <div className='Calculator'>
-                <Display number_on_display={number_on_display} operation_on_display={operation_on_display}
-                         number2_on_display={number2_on_display} eval_on_display={eval_on_display} result={result}/>
-                <Buttons displayNumber={displayNumber} numbers={numbers} number_on_display={number_on_display}
-                         operations={operations} displayOperation={displayOperation}
-                         displayEval={displayEval} print_number2={print_number2} eraseAll={eraseAll}/>
+                <Display symbols_on_display={symbols_on_display}/>
+                <Buttons numbers={numbers} displayNumber={displayNumber} numbers_on_display={numbers_on_display}
+                         operations={operations} displayOperation={displayOperation} displayEval={displayEval}
+                         eraseAll={eraseAll}/>
             </div>
         )
     }
 }
 
 let numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-console.log(numbers, 'numbers');
+// console.log(numbers, 'numbers');
 
 let operations = ['+', '-', '*', '/'];
 
@@ -35,14 +33,10 @@ const mapStateToProps = state => {
     return {
         numbers: numbers,
         operations: operations,
-        number_on_display: state.number_on_display,
-        number2_on_display: state.number2_on_display,
-        operation_on_display: state.operation_on_display,
-        first_operand: state.first_operand,
-        print_number2: state.print_number2,
-        second_operand: state.second_operand,
-        eval_on_display: state.eval_on_display,
-        result: state.result
+        symbols_on_display: state.symbols_on_display,
+        numbers_on_display: state.numbers_on_display,
+        calc_arguments: state.calc_arguments,
+        result: state.result,
     }
 };
 

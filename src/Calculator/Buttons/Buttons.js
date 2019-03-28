@@ -7,17 +7,15 @@ import EraseAllButton from './EraseAllButton/EraseAllButton';
 
 class Buttons extends Component {
     render() {
-        const {numbers, operations, displayNumber, displayOperation, number_on_display, number2_on_display,
-            operation_on_display, displayEval, eraseAll} = this.props;
-        console.log(numbers, 'numbers in Buttons');
+        const {numbers, displayNumber, operations, displayOperation, numbers_on_display, displayEval, eraseAll} = this.props;
         return (
             <div className='row Buttons'>
                 <div className='col-10'>
                     <div className='row'>
                         {numbers.map(number => {
                             return <div className='col col-4' key={number}>
-                                <NumberButton displayNumber={displayNumber} number={number} number_on_display={number_on_display}
-                                              number2_on_display={number2_on_display}/>
+                                <NumberButton displayNumber={displayNumber} number={number}
+                                              numbers_on_display={numbers_on_display}/>
                             </div>
                         })}
                         <div className='col col-4'>
@@ -32,8 +30,7 @@ class Buttons extends Component {
                     <div className='row'>
                         {operations.map(operation => {
                             return <div className='col col-4' key={operation}>
-                                <OperationButton displayOperation={displayOperation} operation={operation}
-                                                 operation_on_display={operation_on_display}/>
+                                <OperationButton displayOperation={displayOperation} operation={operation}/>
                             </div>
                         })}
                     </div>
