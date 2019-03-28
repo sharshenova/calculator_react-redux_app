@@ -14,11 +14,14 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         // выполняется при нажатии на кнопку с цифрой
         case 'DISPLAY_NUMBER':
+
+
             // записываем цифру с кнопки, которая была нажата, на экран
             symbols_on_display = symbols_on_display + action.number;
 
             // записываем цифру с кнопки, которая была нажата, в строку, где будет собираться число
             numbers_on_display = numbers_on_display + action.number;
+
 
             console.log(state, 'state - DISPLAY_NUMBER');
             return {...state, symbols_on_display: symbols_on_display, numbers_on_display: numbers_on_display};
@@ -31,8 +34,6 @@ const reducer = (state = initialState, action) => {
             // переделываем строку, содержащую цифры нового операнда, в целое число
             let new_operand = Number(numbers_on_display);
 
-            // обнуляем calc_arguments
-            calc_arguments = [];
 
             // добавляем новый операнд в вычислительные аргументы
             calc_arguments.push(new_operand);
@@ -112,8 +113,8 @@ const reducer = (state = initialState, action) => {
             result = calc_arguments[0];
             console.log(result, 'result');
 
-            // обнуляем calc_arguments
-            calc_arguments = null;
+            // // обнуляем calc_arguments
+            // calc_arguments = null;
             console.log(calc_arguments, 'calc_arguments after result');
 
             // записываем на экран результат
@@ -125,7 +126,12 @@ const reducer = (state = initialState, action) => {
         // выполняется при нажатии на кнопку перезагрузки (AC)
         case 'ERASE_ALL':
             state = initialState;
+            state.calc_arguments = [];
+            
+
+
             console.log(state, 'erase all - state=InitialState');
+
             return {...state};
         default:
             return state;
